@@ -5,7 +5,10 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "owner": "harsh_02032002",
+    "splash": {
+      "backgroundColor": "#FF385C",
+      "resizeMode": "contain"
+    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.harsh02032002.cravedashapp",
@@ -14,13 +17,11 @@
       }
     },
     "android": {
-      "package": "com.harsh02032002.cravedashapp"
-    },
-    "web": {},
-    "extra": {
-      "eas": {
-        "projectId": "4c9f2caf-be9c-48f3-98c7-d94aeb53a2e1"
+      "package": "com.harsh02032002.cravedashapp",
+      "splash": {
+        "backgroundColor": "#FF385C"
       }
-    }
+    },
+    "web": {}
   }
 }

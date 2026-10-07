@@ -5,13 +5,19 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "owner": "harsh_02032002",
+    "splash": {
+      "backgroundColor": "#059669",
+      "resizeMode": "contain"
+    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.harsh02032002.cravedashrider"
     },
     "android": {
-      "package": "com.harsh02032002.cravedashrider"
+      "package": "com.harsh02032002.cravedashrider",
+      "splash": {
+        "backgroundColor": "#059669"
+      }
     },
     "web": {}
   }
