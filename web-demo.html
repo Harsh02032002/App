@@ -3,622 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CraveDash - Food Delivery Web Preview</title>
+  <title>CraveDash 3-App Ecosystem Preview</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- FontAwesome / Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #0f172a;
-      color: #1e293b;
-      margin: 0;
-      padding: 0;
-    }
-    .phone-container {
-      width: 410px;
-      height: 840px;
-      background: #ffffff;
-      border-radius: 48px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 12px #1e293b;
-      position: relative;
-      overflow: hidden;
-    }
-    .phone-notch {
-      width: 140px;
-      height: 28px;
-      background: #1e293b;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      border-bottom-left-radius: 18px;
-      border-bottom-right-radius: 18px;
-      z-index: 100;
-    }
-    .scroll-custom::-webkit-scrollbar {
-      width: 4px;
-    }
-    .scroll-custom::-webkit-scrollbar-thumb {
-      background: #e2e8f0;
-      border-radius: 10px;
-    }
-    .badge-veg {
-      border: 1.5px solid #00b562;
-    }
-    .dot-veg {
-      background: #00b562;
-    }
-    .badge-nonveg {
-      border: 1.5px solid #e53935;
-    }
-    .dot-nonveg {
-      background: #e53935;
-    }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0f172a; color: #1e293b; margin: 0; padding: 0; }
+    .phone-container { width: 410px; height: 850px; background: #ffffff; border-radius: 48px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 12px #1e293b; position: relative; overflow: hidden; }
+    .scroll-custom::-webkit-scrollbar { width: 4px; }
+    .scroll-custom::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-  <!-- Main Container -->
   <div class="flex flex-col md:flex-row items-center gap-8 max-w-6xl w-full justify-center">
     
-    <!-- Left Info Panel on PC -->
+    <!-- Left Overview Panel -->
     <div class="text-white max-w-md space-y-4 text-center md:text-left">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold uppercase tracking-wider border border-rose-500/30">
-        <i data-lucide="sparkles" class="w-4 h-4"></i> Commercial Mobile Prototype
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-wider border border-purple-500/30">
+        <i data-lucide="layers" class="w-4 h-4"></i> 3-App Food Delivery Ecosystem
       </div>
-      <h1 class="text-4xl font-extrabold text-white tracking-tight">CraveDash</h1>
-      <p class="text-slate-400 text-sm leading-relaxed">
-        A Zomato-style food delivery app built with React Native + TypeScript. Experience live order tracking, category filtering, cart customization, promo coupons, and multi-step checkout.
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">CraveDash Platform</h1>
+      <p class="text-slate-400 text-xs leading-relaxed">
+        Complete commercial food delivery system with 3 role-based applications sharing a cohesive visual identity:
       </p>
-      
-      <div class="pt-2 flex flex-wrap gap-2 justify-center md:justify-start text-xs font-semibold text-slate-300">
-        <span class="px-3 py-1 bg-slate-800 rounded-lg border border-slate-700">📱 iOS & Android Ready</span>
-        <span class="px-3 py-1 bg-slate-800 rounded-lg border border-slate-700">⚡ React Native + TS</span>
-        <span class="px-3 py-1 bg-slate-800 rounded-lg border border-slate-700">🛵 Live GPS Tracking</span>
-      </div>
 
-      <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700 text-left text-xs text-slate-300 space-y-2">
-        <div class="font-bold text-white flex items-center gap-1.5">
-          <i data-lucide="info" class="w-4 h-4 text-rose-400"></i> Why port 8081 showed JSON?
+      <div class="space-y-2 text-xs">
+        <div onclick="switchApp('customer')" class="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl flex items-center justify-between cursor-pointer hover:bg-rose-500/20">
+          <div class="flex items-center gap-2 text-rose-400 font-bold"><i data-lucide="user" class="w-4 h-4"></i> 1. Customer Food App</div>
+          <span class="text-[10px] bg-rose-500 text-white font-extrabold px-2 py-0.5 rounded">TEST ROLE</span>
         </div>
-        <p class="text-slate-400">
-          Port 8081 is Metro bundler's native endpoint for mobile Expo Go. To run in PC browser via Expo, install web dependencies with <code class="text-rose-400 font-mono">npm install</code>, then run <code class="text-rose-400 font-mono">npm run web</code>!
-        </p>
+        <div onclick="switchApp('restaurant')" class="p-3 bg-purple-500/10 border border-purple-500/30 rounded-xl flex items-center justify-between cursor-pointer hover:bg-purple-500/20">
+          <div class="flex items-center gap-2 text-purple-400 font-bold"><i data-lucide="store" class="w-4 h-4"></i> 2. Restaurant Partner App</div>
+          <span class="text-[10px] bg-purple-600 text-white font-extrabold px-2 py-0.5 rounded">TEST ROLE</span>
+        </div>
+        <div onclick="switchApp('delivery')" class="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl flex items-center justify-between cursor-pointer hover:bg-emerald-500/20">
+          <div class="flex items-center gap-2 text-emerald-400 font-bold"><i data-lucide="bike" class="w-4 h-4"></i> 3. Delivery Partner App</div>
+          <span class="text-[10px] bg-emerald-600 text-white font-extrabold px-2 py-0.5 rounded">TEST ROLE</span>
+        </div>
       </div>
     </div>
 
-    <!-- Phone Frame Preview -->
+    <!-- Phone Container Frame -->
     <div class="phone-container flex flex-col relative bg-slate-50">
-      <div class="phone-notch"></div>
-
-      <!-- App Header / Status Bar Simulation -->
-      <div class="pt-8 px-5 pb-2 bg-white border-b border-slate-100 flex items-center justify-between z-10">
-        <div class="flex items-center gap-2 cursor-pointer" onclick="toggleLocationModal()">
-          <div class="w-8 h-8 rounded-full bg-rose-50 flex items-center justify-center text-rose-500">
-            <i data-lucide="map-pin" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <div class="flex items-center gap-1 font-extrabold text-sm text-slate-800">
-              <span id="header-addr-title">Home</span>
-              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
-            </div>
-            <p class="text-[11px] text-slate-400 truncate max-w-[150px]" id="header-addr-desc">Sector 62, New Delhi</p>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-2">
-          <button onclick="switchScreen('notifications')" class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center relative">
-            <i data-lucide="bell" class="w-4 h-4 text-slate-700"></i>
-            <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500"></span>
-          </button>
-          <button onclick="switchScreen('profile')" class="w-9 h-9 rounded-full overflow-hidden border-2 border-rose-500">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150" class="w-full h-full object-cover">
-          </button>
+      
+      <!-- Top Ecosystem Role Switcher Banner -->
+      <div class="bg-slate-900 px-3 py-2 text-white border-b border-slate-800 pt-6">
+        <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-widest text-center mb-1">ECOSYSTEM ROLE SWITCHER</p>
+        <div class="grid grid-cols-3 gap-1 bg-slate-800 p-1 rounded-full text-[11px] font-bold">
+          <button onclick="switchApp('customer')" id="role-customer" class="py-1.5 rounded-full bg-rose-500 text-white text-center">Customer</button>
+          <button onclick="switchApp('restaurant')" id="role-restaurant" class="py-1.5 rounded-full text-slate-400 text-center">Restaurant</button>
+          <button onclick="switchApp('delivery')" id="role-delivery" class="py-1.5 rounded-full text-slate-400 text-center">Rider</button>
         </div>
       </div>
 
-      <!-- Dynamic Screen Body Container -->
-      <div id="screen-body" class="flex-1 overflow-y-auto scroll-custom pb-20 bg-slate-50">
-        <!-- Content inserted dynamically by JS -->
+      <!-- Main Dynamic App Body -->
+      <div id="app-body" class="flex-1 overflow-y-auto scroll-custom bg-slate-50">
+        <!-- Rendered by JS -->
       </div>
-
-      <!-- Bottom Floating Cart Bar (Conditional) -->
-      <div id="cart-float-bar" class="hidden absolute bottom-16 left-4 right-4 bg-emerald-600 text-white p-3.5 rounded-2xl flex items-center justify-between shadow-xl cursor-pointer" onclick="switchScreen('cart')">
-        <div class="flex items-center gap-3">
-          <div class="w-7 h-7 rounded-full bg-white text-emerald-600 font-extrabold text-xs flex items-center justify-center" id="cart-count-num">1</div>
-          <div>
-            <p class="text-xs font-extrabold" id="cart-rest-name">The Royal Biryani House</p>
-            <p class="text-[11px] text-emerald-100" id="cart-total-price">₹533 • View Cart</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-1 text-xs font-extrabold">
-          Checkout <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </div>
-      </div>
-
-      <!-- Bottom Navigation Tab Bar -->
-      <div class="h-16 bg-white border-t border-slate-200 flex items-center justify-around px-2 z-20">
-        <button onclick="switchScreen('home')" id="nav-home" class="flex flex-col items-center gap-0.5 text-rose-500 font-bold text-[11px]">
-          <i data-lucide="home" class="w-5 h-5"></i> Home
-        </button>
-        <button onclick="switchScreen('search')" id="nav-search" class="flex flex-col items-center gap-0.5 text-slate-400 font-semibold text-[11px]">
-          <i data-lucide="search" class="w-5 h-5"></i> Search
-        </button>
-        <button onclick="switchScreen('orders')" id="nav-orders" class="flex flex-col items-center gap-0.5 text-slate-400 font-semibold text-[11px]">
-          <i data-lucide="shopping-bag" class="w-5 h-5"></i> Orders
-        </button>
-        <button onclick="switchScreen('favourites')" id="nav-favourites" class="flex flex-col items-center gap-0.5 text-slate-400 font-semibold text-[11px]">
-          <i data-lucide="heart" class="w-5 h-5"></i> Saved
-        </button>
-        <button onclick="switchScreen('profile')" id="nav-profile" class="flex flex-col items-center gap-0.5 text-slate-400 font-semibold text-[11px]">
-          <i data-lucide="user" class="w-5 h-5"></i> Profile
-        </button>
-      </div>
-
     </div>
 
   </div>
 
-  <!-- JavaScript Prototype Engine -->
   <script>
-    // State
-    let state = {
-      currentScreen: 'home',
-      cart: [
-        {
-          id: 'c1',
-          name: 'Hyderabadi Chicken Dum Biryani',
-          price: 340,
-          qty: 1,
-          size: 'Medium (Serves 2)',
-          rest: 'The Royal Biryani House'
+    let currentApp = 'customer';
+
+    function switchApp(app) {
+      currentApp = app;
+      const body = document.getElementById('app-body');
+      
+      ['customer', 'restaurant', 'delivery'].forEach(r => {
+        const btn = document.getElementById(`role-${r}`);
+        if (r === app) {
+          if (r === 'customer') btn.className = 'py-1.5 rounded-full bg-rose-500 text-white font-bold text-center';
+          if (r === 'restaurant') btn.className = 'py-1.5 rounded-full bg-purple-600 text-white font-bold text-center';
+          if (r === 'delivery') btn.className = 'py-1.5 rounded-full bg-emerald-600 text-white font-bold text-center';
+        } else {
+          btn.className = 'py-1.5 rounded-full text-slate-400 text-center';
         }
-      ],
-      selectedAddress: { title: 'Home', line: 'Flat 402, Green Valley', city: 'New Delhi' },
-      trackingStep: 4, // 0: Placed, 1: Accepted, 2: Preparing, 3: Picked Up, 4: On Way, 5: Delivered
-    };
+      });
 
-    const restaurants = [
-      {
-        id: 'rest-1',
-        name: 'The Royal Biryani House',
-        cuisines: 'Biryani • Mughlai • North Indian',
-        rating: 4.8,
-        time: '28 mins',
-        dist: '2.4 km',
-        cost: '₹450 for two',
-        offer: '50% OFF up to ₹120',
-        img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500'
-      },
-      {
-        id: 'rest-2',
-        name: 'Urban Burger Co.',
-        cuisines: 'Burger • American • Shakes',
-        rating: 4.6,
-        time: '22 mins',
-        dist: '1.8 km',
-        cost: '₹350 for two',
-        offer: 'Flat ₹120 OFF',
-        img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500'
-      },
-      {
-        id: 'rest-3',
-        name: "La Pino's Pizza Studio",
-        cuisines: 'Pizza • Italian • Pasta',
-        rating: 4.7,
-        time: '32 mins',
-        dist: '3.1 km',
-        cost: '₹600 for two',
-        offer: 'BUY 1 GET 1 FREE',
-        img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500'
-      },
-      {
-        id: 'rest-4',
-        name: 'Wok & Roll Asian Bistro',
-        cuisines: 'Chinese • Asian • Momos',
-        rating: 4.5,
-        time: '25 mins',
-        dist: '2.1 km',
-        cost: '₹500 for two',
-        offer: '20% OFF on ₹400+',
-        img: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=500'
-      }
-    ];
+      if (app === 'customer') renderCustomerApp(body);
+      if (app === 'restaurant') renderRestaurantApp(body);
+      if (app === 'delivery') renderDeliveryApp(body);
 
-    function switchScreen(screen) {
-      state.currentScreen = screen;
-      updateNavState(screen);
-      const container = document.getElementById('screen-body');
-
-      if (screen === 'home') renderHome(container);
-      else if (screen === 'search') renderSearch(container);
-      else if (screen === 'rest-detail') renderRestDetail(container);
-      else if (screen === 'cart') renderCart(container);
-      else if (screen === 'checkout') renderCheckout(container);
-      else if (screen === 'confirmation') renderConfirmation(container);
-      else if (screen === 'tracking') renderTracking(container);
-      else if (screen === 'orders') renderOrders(container);
-      else if (screen === 'favourites') renderFavourites(container);
-      else if (screen === 'profile') renderProfile(container);
-      else if (screen === 'notifications') renderNotifications(container);
-
-      updateCartFloat();
       lucide.createIcons();
     }
 
-    function updateNavState(screen) {
-      ['home', 'search', 'orders', 'favourites', 'profile'].forEach(tab => {
-        const btn = document.getElementById(`nav-${tab}`);
-        if (!btn) return;
-        if (screen === tab) {
-          btn.className = 'flex flex-col items-center gap-0.5 text-rose-500 font-bold text-[11px]';
-        } else {
-          btn.className = 'flex flex-col items-center gap-0.5 text-slate-400 font-semibold text-[11px]';
-        }
-      });
-    }
-
-    function updateCartFloat() {
-      const floatBar = document.getElementById('cart-float-bar');
-      if (state.cart.length > 0 && ['home', 'rest-detail', 'search'].includes(state.currentScreen)) {
-        floatBar.classList.remove('hidden');
-        document.getElementById('cart-count-num').innerText = state.cart.reduce((a, b) => a + b.qty, 0);
-        document.getElementById('cart-total-price').innerText = `₹${state.cart.reduce((a, b) => a + b.price * b.qty, 0)} • View Cart`;
-      } else {
-        floatBar.classList.add('hidden');
-      }
-    }
-
-    // SCREEN RENDERERS
-    function renderHome(el) {
+    function renderCustomerApp(el) {
       el.innerHTML = `
         <div class="p-4 space-y-4">
-          <!-- Search Bar -->
-          <div onclick="switchScreen('search')" class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-center gap-2 cursor-pointer">
-            <i data-lucide="search" class="w-4 h-4 text-rose-500"></i>
-            <span class="text-xs text-slate-400">Search restaurants, dishes or cuisines...</span>
-          </div>
-
-          <!-- Promo Banner -->
-          <div class="bg-gradient-to-r from-rose-500 to-pink-600 text-white p-4 rounded-2xl shadow-lg flex items-center justify-between">
-            <div class="space-y-1">
-              <span class="text-[10px] font-extrabold uppercase bg-black/20 px-2 py-0.5 rounded-full">SPECIAL OFFER</span>
-              <h3 class="font-extrabold text-sm leading-tight">50% OFF ON FIRST CRAVING</h3>
-              <p class="text-[11px] text-rose-100">Use Code: FIRST50</p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200" class="w-16 h-16 rounded-xl object-cover">
-          </div>
-
-          <!-- Categories -->
-          <div>
-            <h3 class="font-extrabold text-sm text-slate-800 mb-2">What's on your mind?</h3>
-            <div class="flex gap-3 overflow-x-auto pb-1 scroll-custom">
-              ${['Pizza', 'Burger', 'Biryani', 'Chinese', 'Desserts', 'Healthy'].map(c => `
-                <div onclick="switchScreen('search')" class="flex flex-col items-center gap-1 cursor-pointer min-w-[60px]">
-                  <div class="w-14 h-14 rounded-full bg-rose-50 border-2 border-rose-100 overflow-hidden shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=150" class="w-full h-full object-cover">
-                  </div>
-                  <span class="text-[11px] font-bold text-slate-700">${c}</span>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-
-          <!-- Restaurant Cards -->
-          <div>
-            <h3 class="font-extrabold text-sm text-slate-800 mb-3">Restaurants Near You</h3>
-            <div class="space-y-4">
-              ${restaurants.map(r => `
-                <div onclick="switchScreen('rest-detail')" class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm cursor-pointer hover:shadow-md transition">
-                  <div class="relative h-36 bg-slate-200">
-                    <img src="${r.img}" class="w-full h-full object-cover">
-                    <span class="absolute bottom-2 left-2 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1">
-                      <i data-lucide="tag" class="w-3 h-3"></i> ${r.offer}
-                    </span>
-                    <span class="absolute top-2 right-2 bg-black/40 text-white p-1.5 rounded-full">
-                      <i data-lucide="heart" class="w-3.5 h-3.5"></i>
-                    </span>
-                  </div>
-                  <div class="p-3">
-                    <div class="flex items-center justify-between">
-                      <h4 class="font-extrabold text-slate-800 text-sm">${r.name}</h4>
-                      <span class="bg-emerald-600 text-white text-[11px] font-bold px-1.5 py-0.5 rounded flex items-center gap-0.5">
-                        <i data-lucide="star" class="w-3 h-3 fill-white"></i> ${r.rating}
-                      </span>
-                    </div>
-                    <p class="text-xs text-slate-500 mt-0.5">${r.cuisines}</p>
-                    <div class="flex items-center gap-2 text-[11px] text-slate-400 mt-2">
-                      <span>${r.time}</span> • <span>${r.dist}</span> • <span>${r.cost}</span>
-                    </div>
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderRestDetail(el) {
-      el.innerHTML = `
-        <div class="space-y-3">
-          <div class="relative h-44 bg-slate-800">
-            <img src="${restaurants[0].img}" class="w-full h-full object-cover">
-            <button onclick="switchScreen('home')" class="absolute top-3 left-3 w-8 h-8 rounded-full bg-white flex items-center justify-center">
-              <i data-lucide="arrow-left" class="w-4 h-4 text-slate-800"></i>
-            </button>
-          </div>
-
-          <div class="px-4">
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2 -mt-10 relative z-10">
-              <div class="flex items-center justify-between">
-                <h2 class="font-extrabold text-base text-slate-800">${restaurants[0].name}</h2>
-                <span class="bg-emerald-600 text-white text-xs font-bold px-2 py-0.5 rounded">★ 4.8</span>
-              </div>
-              <p class="text-xs text-slate-500">${restaurants[0].cuisines}</p>
-              <p class="text-[11px] text-slate-400">Connaught Place, New Delhi</p>
-              <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-700">
-                <span>⚡ ${restaurants[0].time}</span>
-                <span>📍 ${restaurants[0].dist}</span>
-                <span>💰 ${restaurants[0].cost}</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Dishes Menu -->
-          <div class="px-4 space-y-3 pt-2">
-            <h3 class="font-extrabold text-sm text-slate-800">Recommended Dishes</h3>
-            
-            <div class="bg-white p-3 rounded-2xl border border-slate-200 flex justify-between gap-3">
-              <div class="space-y-1 flex-1">
-                <div class="w-3.5 h-3.5 badge-nonveg rounded flex items-center justify-center">
-                  <div class="w-1.5 h-1.5 dot-nonveg rounded-full"></div>
-                </div>
-                <h4 class="font-bold text-xs text-slate-800">Hyderabadi Chicken Dum Biryani</h4>
-                <p class="text-[11px] font-extrabold text-slate-900">₹340</p>
-                <p class="text-[10px] text-slate-400 leading-tight">Slow cooked basmati rice with succulent chicken pieces.</p>
-              </div>
-              <div class="flex flex-col items-center">
-                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=200" class="w-20 h-20 rounded-xl object-cover">
-                <button onclick="addToCart()" class="-mt-4 bg-white border-2 border-rose-500 text-rose-500 text-xs font-extrabold px-4 py-1 rounded-xl shadow-md hover:bg-rose-50">
-                  ADD
-                </button>
-              </div>
-            </div>
-
-            <div class="bg-white p-3 rounded-2xl border border-slate-200 flex justify-between gap-3">
-              <div class="space-y-1 flex-1">
-                <div class="w-3.5 h-3.5 badge-veg rounded flex items-center justify-center">
-                  <div class="w-1.5 h-1.5 dot-veg rounded-full"></div>
-                </div>
-                <h4 class="font-bold text-xs text-slate-800">Paneer Tikka Dum Biryani</h4>
-                <p class="text-[11px] font-extrabold text-slate-900">₹290</p>
-                <p class="text-[10px] text-slate-400 leading-tight">Grilled cottage cheese cubes in spiced tandoori rice.</p>
-              </div>
-              <div class="flex flex-col items-center">
-                <img src="https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=200" class="w-20 h-20 rounded-xl object-cover">
-                <button onclick="addToCart()" class="-mt-4 bg-white border-2 border-rose-500 text-rose-500 text-xs font-extrabold px-4 py-1 rounded-xl shadow-md hover:bg-rose-50">
-                  ADD
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      `;
-    }
-
-    function renderCart(el) {
-      el.innerHTML = `
-        <div class="p-4 space-y-4">
-          <div class="flex items-center gap-2">
-            <button onclick="switchScreen('rest-detail')" class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200">
-              <i data-lucide="arrow-left" class="w-4 h-4 text-slate-800"></i>
-            </button>
-            <h2 class="font-extrabold text-base text-slate-800">My Cart</h2>
-          </div>
-
-          <!-- Rest Header -->
-          <div class="bg-white p-3 rounded-xl border border-slate-200 flex items-center gap-3">
-            <img src="${restaurants[0].img}" class="w-10 h-10 rounded-lg object-cover">
-            <div>
-              <h4 class="font-extrabold text-xs text-slate-800">${restaurants[0].name}</h4>
-              <p class="text-[10px] text-slate-400">Connaught Place</p>
-            </div>
-          </div>
-
-          <!-- Items -->
-          <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
-            <h3 class="font-extrabold text-xs text-slate-700 uppercase tracking-wider">Ordered Items</h3>
-            ${state.cart.map(item => `
-              <div class="flex items-center justify-between text-xs pb-3 border-b border-slate-100">
-                <div>
-                  <p class="font-bold text-slate-800">${item.name}</p>
-                  <p class="text-[10px] text-slate-400">₹${item.price}</p>
-                </div>
-                <div class="flex items-center gap-2 bg-rose-50 border border-rose-200 px-2 py-1 rounded-lg text-rose-500 font-extrabold">
-                  <span>${item.qty}</span>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-
-          <!-- Coupon -->
-          <div class="bg-white p-3 rounded-2xl border border-dashed border-rose-300 flex items-center justify-between">
-            <div class="flex items-center gap-2 text-xs">
-              <i data-lucide="tag" class="w-4 h-4 text-rose-500"></i>
-              <span class="font-bold text-slate-800">FIRST50 (-₹120) Applied</span>
-            </div>
-            <span class="text-xs font-bold text-emerald-600">Saved!</span>
-          </div>
-
-          <!-- Bill -->
-          <div class="bg-white p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
-            <div class="flex justify-between text-slate-500"><span>Item Total</span><span>₹340</span></div>
-            <div class="flex justify-between text-slate-500"><span>Delivery Fee</span><span>₹35</span></div>
-            <div class="flex justify-between text-slate-500"><span>Platform Fee</span><span>₹10</span></div>
-            <div class="flex justify-between text-emerald-600 font-bold"><span>Discount</span><span>-₹120</span></div>
-            <div class="pt-2 border-t border-slate-200 flex justify-between font-extrabold text-slate-900 text-sm">
-              <span>To Pay</span><span>₹265</span>
-            </div>
-          </div>
-
-          <button onclick="switchScreen('checkout')" class="w-full bg-rose-500 text-white font-extrabold py-3.5 rounded-2xl shadow-lg hover:bg-rose-600 transition flex items-center justify-center gap-2">
-            Proceed to Checkout <i data-lucide="chevron-right" class="w-4 h-4"></i>
-          </button>
-        </div>
-      `;
-    }
-
-    function renderCheckout(el) {
-      el.innerHTML = `
-        <div class="p-4 space-y-4">
-          <div class="flex items-center gap-2">
-            <button onclick="switchScreen('cart')" class="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200">
-              <i data-lucide="arrow-left" class="w-4 h-4 text-slate-800"></i>
-            </button>
-            <h2 class="font-extrabold text-base text-slate-800">Checkout & Payment</h2>
+          <div class="bg-gradient-to-r from-rose-500 to-pink-600 text-white p-4 rounded-2xl shadow-lg">
+            <span class="text-[10px] font-extrabold uppercase bg-black/20 px-2 py-0.5 rounded-full">CUSTOMER APP</span>
+            <h2 class="font-extrabold text-base mt-1">Order Food Online</h2>
+            <p class="text-xs text-rose-100">Top Hyderabadi Biryani & Smash Burgers</p>
           </div>
 
           <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-2">
-            <h3 class="font-extrabold text-xs text-slate-700">Delivery Address</h3>
-            <p class="text-xs font-bold text-slate-800">Home</p>
-            <p class="text-[11px] text-slate-500">Flat 402, Green Valley Apartments, Sector 62, New Delhi</p>
-          </div>
-
-          <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
-            <h3 class="font-extrabold text-xs text-slate-700">Select Payment Method</h3>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-rose-500 bg-rose-50/50 cursor-pointer">
-              <input type="radio" name="pay" checked class="accent-rose-500">
-              <div class="text-xs">
-                <p class="font-bold text-slate-800">UPI (Google Pay / PhonePe)</p>
-                <p class="text-[10px] text-slate-400">Instant & Fast Payment</p>
-              </div>
-            </label>
-            <label class="flex items-center gap-3 p-2.5 rounded-xl border border-slate-200 cursor-pointer">
-              <input type="radio" name="pay" class="accent-rose-500">
-              <div class="text-xs">
-                <p class="font-bold text-slate-800">Cash on Delivery</p>
-                <p class="text-[10px] text-slate-400">Pay upon delivery</p>
-              </div>
-            </label>
-          </div>
-
-          <button onclick="switchScreen('confirmation')" class="w-full bg-rose-500 text-white font-extrabold py-3.5 rounded-2xl shadow-lg hover:bg-rose-600 transition">
-            Place Order (₹265)
-          </button>
-        </div>
-      `;
-    }
-
-    function renderConfirmation(el) {
-      el.innerHTML = `
-        <div class="p-6 text-center space-y-4 my-auto">
-          <div class="w-20 h-20 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto shadow-xl">
-            <i data-lucide="check" class="w-10 h-10 stroke-[3]"></i>
-          </div>
-          <h2 class="font-extrabold text-xl text-slate-800">Order Placed Successfully!</h2>
-          <p class="text-xs text-slate-500">Order #ORD-98421 • Estimated Delivery: 25-30 Mins</p>
-          <div class="pt-4 space-y-2">
-            <button onclick="switchScreen('tracking')" class="w-full bg-rose-500 text-white font-extrabold py-3 rounded-xl shadow-md">
-              Track Live Order 🛵
-            </button>
-            <button onclick="switchScreen('home')" class="w-full bg-slate-200 text-slate-700 font-bold py-3 rounded-xl">
-              Back to Home
-            </button>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderTracking(el) {
-      el.innerHTML = `
-        <div class="space-y-4">
-          <!-- Vector Map Canvas -->
-          <div class="relative h-56 bg-slate-200 overflow-hidden border-b border-slate-300">
-            <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px]"></div>
-            
-            <!-- Pins -->
-            <div class="absolute top-10 left-12 bg-slate-900 text-white p-2 rounded-full shadow-lg text-center">
-              <i data-lucide="store" class="w-4 h-4"></i>
-            </div>
-            
-            <div class="absolute bottom-10 right-12 bg-emerald-600 text-white p-2 rounded-full shadow-lg">
-              <i data-lucide="home" class="w-4 h-4"></i>
-            </div>
-
-            <!-- Moving Valet Pin -->
-            <div class="absolute top-24 left-1/2 -translate-x-1/2 bg-rose-500 text-white p-2.5 rounded-full shadow-xl animate-pulse">
-              <i data-lucide="navigation" class="w-5 h-5"></i>
-            </div>
-
-            <div class="absolute top-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full shadow text-xs font-bold text-rose-500">
-              Arriving in 18 mins
-            </div>
-          </div>
-
-          <!-- Driver Profile Card -->
-          <div class="px-4">
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-12 h-12 rounded-full object-cover">
-                <div>
-                  <h4 class="font-extrabold text-xs text-slate-800">Rohan Sharma ⭐ 4.9</h4>
-                  <p class="text-[10px] text-slate-400">TVS Jupiter (DL 04 AB 8812)</p>
-                  <p class="text-[10px] font-bold text-rose-500">Your Delivery Valet</p>
-                </div>
-              </div>
-              <div class="flex gap-2">
-                <button onclick="alert('Calling Rohan Sharma...')" class="w-9 h-9 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center">
-                  <i data-lucide="phone" class="w-4 h-4"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Progress Stepper -->
-          <div class="px-4 space-y-2">
-            <h3 class="font-extrabold text-xs text-slate-700">Order Timeline</h3>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3 text-xs">
-              <div class="flex items-center gap-3 text-emerald-600 font-bold">
-                <i data-lucide="check-circle" class="w-4 h-4"></i> Order Placed (7:15 PM)
-              </div>
-              <div class="flex items-center gap-3 text-emerald-600 font-bold">
-                <i data-lucide="check-circle" class="w-4 h-4"></i> Restaurant Accepted (7:17 PM)
-              </div>
-              <div class="flex items-center gap-3 text-emerald-600 font-bold">
-                <i data-lucide="check-circle" class="w-4 h-4"></i> Food Prepared (7:25 PM)
-              </div>
-              <div class="flex items-center gap-3 text-rose-500 font-extrabold">
-                <i data-lucide="bike" class="w-4 h-4"></i> Valet On The Way (7:30 PM)
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderOrders(el) {
-      el.innerHTML = `
-        <div class="p-4 space-y-4">
-          <h2 class="font-extrabold text-base text-slate-800">My Orders</h2>
-          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-            <div class="flex justify-between items-start">
+            <h3 class="font-extrabold text-xs text-slate-800">1. Select Restaurant</h3>
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded-xl border border-slate-200">
               <div>
-                <h4 class="font-extrabold text-xs text-slate-800">${restaurants[0].name}</h4>
-                <p class="text-[10px] text-slate-400">ORD-98421 • Today 7:15 PM</p>
+                <p class="font-bold text-xs text-slate-900">The Royal Biryani House</p>
+                <p class="text-[10px] text-slate-400">★ 4.8 • 28 mins delivery</p>
               </div>
-              <span class="bg-rose-100 text-rose-600 text-[10px] font-extrabold px-2 py-0.5 rounded">ON THE WAY</span>
-            </div>
-            <p class="text-xs text-slate-600">1x Hyderabadi Chicken Dum Biryani</p>
-            <div class="flex justify-between items-center pt-2 border-t border-slate-100">
-              <span class="font-extrabold text-sm text-slate-900">₹265</span>
-              <button onclick="switchScreen('tracking')" class="bg-rose-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg">
-                Track Order
+              <button onclick="switchApp('restaurant')" class="bg-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg">
+                View in Restaurant App →
               </button>
             </div>
           </div>
@@ -626,63 +117,59 @@
       `;
     }
 
-    function renderFavourites(el) {
+    function renderRestaurantApp(el) {
       el.innerHTML = `
         <div class="p-4 space-y-4">
-          <h2 class="font-extrabold text-base text-slate-800">Saved Favourites</h2>
-          <div class="bg-white p-3 rounded-2xl border border-slate-200 flex gap-3">
-            <img src="${restaurants[0].img}" class="w-16 h-16 rounded-xl object-cover">
-            <div class="flex-1">
-              <h4 class="font-extrabold text-xs text-slate-800">${restaurants[0].name}</h4>
-              <p class="text-[10px] text-slate-400">${restaurants[0].cuisines}</p>
-              <p class="text-[11px] font-bold text-emerald-600 mt-1">★ 4.8 (2,450 ratings)</p>
+          <div class="bg-purple-700 text-white p-4 rounded-2xl shadow-lg">
+            <span class="text-[10px] font-extrabold uppercase bg-black/20 px-2 py-0.5 rounded-full">RESTAURANT PARTNER APP</span>
+            <h2 class="font-extrabold text-base mt-1">The Royal Biryani House</h2>
+            <p class="text-xs text-purple-200">Today's Revenue: ₹18,450 • 124 Orders</p>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
+            <h3 class="font-extrabold text-xs text-slate-800">Live Kitchen Orders (KDS)</h3>
+            <div class="p-3 bg-purple-50 border border-purple-200 rounded-xl space-y-2">
+              <div class="flex justify-between text-xs font-extrabold">
+                <span>#ORD-98421 • Aarav Sharma</span>
+                <span class="text-purple-700">NEW ORDER</span>
+              </div>
+              <p class="text-xs text-slate-600">1x Hyderabadi Chicken Dum Biryani, 1x Extra Raita (₹533)</p>
+              <button onclick="alert('Accepted! Order sent to kitchen & delivery driver notified.'); switchApp('delivery');" class="w-full bg-purple-600 text-white text-xs font-bold py-2 rounded-lg">
+                Accept Order & Notify Rider →
+              </button>
             </div>
           </div>
         </div>
       `;
     }
 
-    function renderProfile(el) {
+    function renderDeliveryApp(el) {
       el.innerHTML = `
         <div class="p-4 space-y-4">
-          <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center space-y-2">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200" class="w-16 h-16 rounded-full mx-auto object-cover border-2 border-rose-500">
-            <h3 class="font-extrabold text-sm text-slate-800">Aarav Sharma</h3>
-            <p class="text-xs text-slate-400">+91 98765 43210 • aarav@example.com</p>
+          <div class="bg-emerald-700 text-white p-4 rounded-2xl shadow-lg">
+            <span class="text-[10px] font-extrabold uppercase bg-black/20 px-2 py-0.5 rounded-full">DELIVERY PARTNER APP</span>
+            <h2 class="font-extrabold text-base mt-1">Kabir Verma (Rider)</h2>
+            <p class="text-xs text-emerald-200">Today's Earnings: ₹1,240 • 14 Deliveries</p>
           </div>
 
-          <div class="bg-white rounded-2xl border border-slate-200 divide-y divide-slate-100 text-xs font-semibold text-slate-700">
-            <div onclick="switchScreen('orders')" class="p-3 flex justify-between cursor-pointer"><span>My Orders</span><span>›</span></div>
-            <div onclick="toggleLocationModal()" class="p-3 flex justify-between cursor-pointer"><span>Saved Addresses</span><span>›</span></div>
-            <div onclick="switchScreen('favourites')" class="p-3 flex justify-between cursor-pointer"><span>Favourites</span><span>›</span></div>
-            <div onclick="alert('Support hotline: 1800-272-833')" class="p-3 flex justify-between cursor-pointer"><span>Help & Support</span><span>›</span></div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderNotifications(el) {
-      el.innerHTML = `
-        <div class="p-4 space-y-3">
-          <h2 class="font-extrabold text-base text-slate-800">Notifications</h2>
-          <div class="bg-rose-50/70 p-3 rounded-xl border border-rose-100 text-xs space-y-1">
-            <p class="font-bold text-rose-600">🛵 Order on the way!</p>
-            <p class="text-slate-600">Rohan Sharma is riding towards your location.</p>
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
+            <h3 class="font-extrabold text-xs text-slate-800">Incoming Delivery Request</h3>
+            <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl space-y-2">
+              <div class="flex justify-between text-xs font-extrabold text-emerald-800">
+                <span>Pickup: The Royal Biryani House</span>
+                <span class="text-emerald-600">+₹85 Earned</span>
+              </div>
+              <p class="text-xs text-slate-600">Drop: Aarav Sharma (Flat 402, Green Valley)</p>
+              <button onclick="alert('Order Picked up & Delivered! Earned +₹85'); switchApp('customer');" class="w-full bg-emerald-600 text-white text-xs font-bold py-2 rounded-lg">
+                Accept & Confirm Delivery →
+              </button>
+            </div>
           </div>
         </div>
       `;
     }
 
-    function addToCart() {
-      switchScreen('cart');
-    }
-
-    function toggleLocationModal() {
-      alert('Location: Sector 62, New Delhi (Default)');
-    }
-
-    // Init First Screen
-    switchScreen('home');
+    switchApp('customer');
   </script>
 </body>
 </html>

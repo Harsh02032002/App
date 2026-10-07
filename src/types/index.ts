@@ -1,4 +1,5 @@
 export type FoodType = 'veg' | 'non-veg' | 'egg';
+export type AppRole = 'customer' | 'restaurant' | 'delivery';
 
 export interface CustomizationOption {
   id: string;
@@ -28,6 +29,8 @@ export interface FoodItem {
   ratingCount: number;
   isBestseller?: boolean;
   isCustomizable?: boolean;
+  isAvailable?: boolean;
+  preparationTimeMinutes?: number;
   customizationGroups?: CustomizationGroup[];
 }
 
@@ -47,9 +50,13 @@ export interface Restaurant {
   area: string;
   isPromoted?: boolean;
   isPureVeg?: boolean;
+  isOpen?: boolean;
+  acceptingOrders?: boolean;
   offerBadge?: string;
   aboutText: string;
   openingHours: string;
+  phone?: string;
+  email?: string;
   latitude: number;
   longitude: number;
 }
@@ -63,7 +70,7 @@ export interface CartCustomization {
 }
 
 export interface CartItem {
-  cartItemId: string; // unique ID including selected customizations
+  cartItemId: string;
   foodItem: FoodItem;
   quantity: number;
   selectedSize?: CustomizationOption;
@@ -76,6 +83,7 @@ export type OrderStatus =
   | 'placed'
   | 'accepted'
   | 'preparing'
+  | 'ready_for_pickup'
   | 'picked_up'
   | 'on_the_way'
   | 'delivered'
@@ -93,11 +101,37 @@ export interface DeliveryPartner {
   id: string;
   name: string;
   phone: string;
+  email?: string;
   photo: string;
   rating: number;
+  vehicleType: 'Bike' | 'Scooter' | 'EV' | 'Bicycle';
   vehicleNumber: string;
+  drivingLicenseNo?: string;
+  isOnline: boolean;
   currentLat: number;
   currentLng: number;
+  todayEarnings: number;
+  todayCompletedOrders: number;
+  todayDistanceKm: number;
+  weeklyEarnings: number;
+  monthlyEarnings: number;
+}
+
+export interface DeliveryRequest {
+  id: string;
+  orderId: string;
+  restaurantId: string;
+  restaurantName: string;
+  restaurantAddress: string;
+  customerName: string;
+  customerAddress: string;
+  distanceKm: number;
+  pickupDistanceKm: number;
+  estimatedTimeMinutes: number;
+  estimatedEarnings: number;
+  orderAmount: number;
+  itemsCount: number;
+  expiresInSeconds: number;
 }
 
 export interface Order {
@@ -151,6 +185,7 @@ export interface Coupon {
   discountValue: number;
   minOrderValue: number;
   maxDiscount?: number;
+  isActive?: boolean;
 }
 
 export interface NotificationItem {
@@ -158,9 +193,10 @@ export interface NotificationItem {
   title: string;
   message: string;
   timestamp: string;
-  type: 'order' | 'promo' | 'system';
+  type: 'order' | 'promo' | 'system' | 'payout';
   isRead: boolean;
   orderId?: string;
+  role?: AppRole;
 }
 
 export interface FilterOptions {
@@ -178,4 +214,29 @@ export interface Category {
   name: string;
   image: string;
   iconName: string;
+}
+
+export interface ReviewItem {
+  id: string;
+  customerName: string;
+  customerAvatar: string;
+  rating: number;
+  reviewText: string;
+  date: string;
+  orderItems: string[];
+  reply?: string;
+}
+
+export interface RestaurantAnalytics {
+  todayRevenue: number;
+  weeklyRevenue: number;
+  monthlyRevenue: number;
+  totalOrders: number;
+  pendingOrders: number;
+  completedOrders: number;
+  cancelledOrders: number;
+  avgRating: number;
+  avgOrderValue: number;
+  cancellationRate: number;
+  topSellingDishes: { name: string; count: number; sales: number }[];
 }

@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "CraveDash Partner",
+    "slug": "cravedash-partner-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "owner": "harsh_02032002",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.harsh02032002.cravedashpartner"
+    },
+    "android": {
+      "package": "com.harsh02032002.cravedashpartner"
+    },
+    "web": {}
+  }
+}

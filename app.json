@@ -1,17 +1,26 @@
 {
   "expo": {
     "name": "CraveDash Food Delivery",
-    "slug": "cravedash-food-delivery",
+    "slug": "cravedash-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "owner": "harsh_app",
+    "owner": "harsh_02032002",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.harsh02032002.cravedashapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
-      "package": "com.harsh_app.cravedashfooddelivery"
+      "package": "com.harsh02032002.cravedashapp"
     },
-    "web": {}
+    "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "4c9f2caf-be9c-48f3-98c7-d94aeb53a2e1"
+      }
+    }
   }
 }
