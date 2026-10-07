@@ -5,10 +5,13 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "owner": "harsh_app",
     "ios": {
       "supportsTablet": true
     },
-    "android": {},
+    "android": {
+      "package": "com.harsh_app.cravedashfooddelivery"
+    },
     "web": {}
   }
 }
